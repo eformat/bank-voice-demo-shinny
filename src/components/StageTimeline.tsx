@@ -14,7 +14,7 @@ const pages: PageDef[] = [
     label: s.title.length > 16 ? s.title.slice(0, 16) + '\u2026' : s.title,
     group: s.category,
   })),
-  { id: 9, label: 'Summary', group: 'outro' },
+  { id: 10, label: 'Summary', group: 'outro' },
 ];
 
 const groupColor = (group: string, d: boolean) => {
@@ -53,7 +53,7 @@ export function StageTimeline({ currentPage, goToPage, darkMode: d }: Props) {
             className="absolute top-1/2 left-4 h-0.5 -translate-y-1/2 transition-all duration-500"
             style={{
               width: `${(currentPage / (pages.length - 1)) * 100}%`,
-              background: `linear-gradient(to right, #94a3b8, #fbbf24 10%, #fbbf24 22%, #22d3ee 30%, #22d3ee 66%, #34d399 72%, #34d399 88%, #94a3b8)`,
+              background: `linear-gradient(to right, #94a3b8, #fbbf24 8%, #fbbf24 20%, #22d3ee 28%, #22d3ee 70%, #34d399 75%, #34d399 90%, #94a3b8)`,
             }}
           />
         )}
@@ -97,7 +97,7 @@ export function StageTimeline({ currentPage, goToPage, darkMode: d }: Props) {
                   animate={isActive ? { scale: [1, 1.15, 1] } : { scale: 1 }}
                   transition={isActive ? { repeat: Infinity, duration: 2 } : {}}
                 >
-                  {page.id === 0 ? '\u2B1F' : page.id <= 8 ? page.id : '\u25C8'}
+                  {page.id === 0 ? '\u2B1F' : page.id <= 9 ? page.id : '\u25C8'}
                 </motion.div>
                 <span
                   className={`absolute top-9 text-[9px] whitespace-nowrap font-medium transition-colors ${

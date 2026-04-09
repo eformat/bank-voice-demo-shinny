@@ -88,6 +88,24 @@ export const stages: StageDefinition[] = [
   },
   {
     id: 6,
+    slug: 'mcp-gateway',
+    title: 'MCP Gateway & Tool Access',
+    subtitle: 'Centralized Tool Connectivity for Agents',
+    story: 'Our banking agents need tools to work \u2014 the MCP Gateway manages and secures all tool connectivity at scale',
+    category: 'platform',
+    description:
+      'The MCP Gateway centralizes and manages connectivity for agentic AI applications accessing Model Context Protocol (MCP) servers. Agents register their MCP servers via MCPServerRegistration resources, and the gateway \u2014 built on Envoy proxy \u2014 handles routing, discovery, and security without building networking into application code.',
+    bullets: [
+      'Aggregate MCP servers behind a single endpoint for simplified access',
+      'MCPServerRegistration connects tools to the gateway via HTTPRoutes',
+      'Envoy-based proxy manages routing, security, and access control',
+      'Scale agentic AI applications without building networking into agent code',
+      'Manage access to and security of AI tools and MCP servers centrally',
+    ],
+    image: 'bank-demo-14.png',
+  },
+  {
+    id: 7,
     slug: 'models-as-a-service',
     title: 'Models as a Service',
     subtitle: 'Centralized AI Model Serving with llm-d',
@@ -105,7 +123,7 @@ export const stages: StageDefinition[] = [
     image: 'bank-demo-3.png',
   },
   {
-    id: 7,
+    id: 8,
     slug: 'agent-observability',
     title: 'Agent Observability & Tracing',
     subtitle: 'MLflow + OpenTelemetry Deep Traces',
@@ -122,7 +140,7 @@ export const stages: StageDefinition[] = [
     image: 'bank-demo-10.png',
   },
   {
-    id: 8,
+    id: 9,
     slug: 'agent-guardrails',
     title: 'Agent Guardrails & Safety',
     subtitle: 'TrustyAI FMS + NeMo Guardrails',

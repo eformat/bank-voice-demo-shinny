@@ -10,7 +10,7 @@ const BASE = import.meta.env.BASE_URL;
 
 const imageSlides = [
   { page: 0, src: `${BASE}agentops-arch-front.png`, title: 'Enterprise AgentOps', subtitle: 'Operationalizing AI Agents on Red Hat AI' },
-  { page: 9, src: `${BASE}agentops-arch.png`, title: 'Enterprise AgentOps', subtitle: 'Bring Your Own Agent \u2014 We Make It Production-Ready' },
+  { page: 10, src: `${BASE}agentops-arch.png`, title: 'Enterprise AgentOps', subtitle: 'Bring Your Own Agent \u2014 We Make It Production-Ready' },
 ];
 
 function App() {
@@ -238,9 +238,9 @@ function App() {
               ? 'Overview'
               : currentPage <= 2
                 ? 'The Challenge'
-                : currentPage <= 6
+                : currentPage <= 7
                   ? 'Platform'
-                  : currentPage <= 8
+                  : currentPage <= 9
                     ? 'Operations'
                     : 'Summary'}
           </div>
