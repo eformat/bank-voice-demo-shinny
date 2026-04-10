@@ -103,6 +103,7 @@ export const stages: StageDefinition[] = [
       'Manage access to and security of AI tools and MCP servers centrally',
     ],
     image: 'bank-demo-14.png',
+    image2: 'bank-demo-14.gif',
   },
   {
     id: 7,
@@ -137,7 +138,8 @@ export const stages: StageDefinition[] = [
       'End-to-end visibility from user request through agent chain',
       'Full audit trail: who the agent is, what it did, and why',
     ],
-    image: 'bank-demo-10.png',
+    image: 'bank-demo-10.gif',
+    layout: 'stacked',
   },
   {
     id: 9,
@@ -154,7 +156,7 @@ export const stages: StageDefinition[] = [
       'Jailbreak prevention stops prompt injection attacks',
       'Configurable safety levels: from baseline monitoring to full enforcement',
     ],
-    image: 'bank-demo-11.png',
+    image: 'bank-demo-11.gif',
   },
   {
     id: 10,

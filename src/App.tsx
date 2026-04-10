@@ -238,6 +238,20 @@ function App() {
                           }}
                         />
                       </motion.div>
+                      {stage.image2 && (
+                        <motion.div
+                          className="glass-card overflow-hidden mt-4"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.4, delay: 0.1 }}
+                        >
+                          <img
+                            src={`${BASE}${stage.image2}`}
+                            alt={`${stage.title} (continued)`}
+                            className="w-full object-contain"
+                          />
+                        </motion.div>
+                      )}
                     </div>
 
                     {/* Description panel */}
