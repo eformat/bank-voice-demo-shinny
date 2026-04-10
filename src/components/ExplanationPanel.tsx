@@ -5,9 +5,10 @@ import { fadeInUp, staggerContainer } from '../animations/variants';
 interface Props {
   stage: StageDefinition;
   darkMode: boolean;
+  columns?: number;
 }
 
-export function ExplanationPanel({ stage, darkMode: d }: Props) {
+export function ExplanationPanel({ stage, darkMode: d, columns }: Props) {
   const bulletColor =
     stage.category === 'challenge'
       ? 'bg-amber-400'
@@ -23,14 +24,16 @@ export function ExplanationPanel({ stage, darkMode: d }: Props) {
       animate="visible"
       key={stage.id}
     >
-      <motion.p className={`text-sm leading-relaxed mb-4 ${d ? 'text-slate-300' : 'text-slate-600'}`} variants={fadeInUp}>
-        {stage.description}
-      </motion.p>
-      <motion.ul className="space-y-2.5" variants={staggerContainer} initial="hidden" animate="visible">
+      {stage.description && (
+        <motion.p className={`text-sm leading-relaxed mb-4 ${d ? 'text-slate-300' : 'text-slate-600'}`} variants={fadeInUp}>
+          {stage.description}
+        </motion.p>
+      )}
+      <motion.ul className={`${columns === 2 ? 'columns-2 gap-6' : 'space-y-2.5'}`} variants={staggerContainer} initial="hidden" animate="visible">
         {stage.bullets.map((bullet, i) => (
           <motion.li
             key={i}
-            className="flex items-start gap-2.5"
+            className={`flex items-start gap-2.5 ${columns === 2 ? 'mb-2 break-inside-avoid' : ''}`}
             variants={fadeInUp}
           >
             <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${bulletColor}`} />

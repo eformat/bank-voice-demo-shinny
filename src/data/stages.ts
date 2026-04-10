@@ -156,4 +156,22 @@ export const stages: StageDefinition[] = [
     ],
     image: 'bank-demo-11.png',
   },
+  {
+    id: 10,
+    slug: 'workload-identity',
+    title: 'Workload Identity',
+    subtitle: 'Zero-Trust Flow with AuthBridge & SPIFFE',
+    story: '',
+    category: 'operations',
+    description: '',
+    bullets: [
+      'User triggers "check my identity" — supervisor calls check_identity tool directly',
+      'Backend HTTP request to echo service intercepted by AuthBridge Envoy sidecar',
+      'SPIRE SVID exchanged for Keycloak JWT — cryptographic identity bridging',
+      'JWT claims show SPIFFE ID as azp/client_id with group membership',
+      'End-to-end proof: workload identity verified through AuthBridge token exchange',
+    ],
+    image: 'bank-demo-15.gif',
+    layout: 'stacked',
+  },
 ];

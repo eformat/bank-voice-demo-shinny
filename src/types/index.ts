@@ -8,4 +8,5 @@ export interface StageDefinition {
   description: string;
   bullets: string[];
   image: string; // filename in public/
+  layout?: 'side' | 'stacked'; // 'side' (default): image left + panel right; 'stacked': full-width image + panel below
 }

@@ -10,7 +10,7 @@ const BASE = import.meta.env.BASE_URL;
 
 const imageSlides = [
   { page: 0, src: `${BASE}agentops-arch-front.png`, title: 'Enterprise AgentOps', subtitle: 'Operationalizing AI Agents on Red Hat AI' },
-  { page: 10, src: `${BASE}agentops-arch.png`, title: 'Enterprise AgentOps', subtitle: 'Bring Your Own Agent \u2014 We Make It Production-Ready' },
+  { page: 11, src: `${BASE}agentops-arch.png`, title: 'Enterprise AgentOps', subtitle: 'Bring Your Own Agent \u2014 We Make It Production-Ready' },
 ];
 
 function App() {
@@ -128,12 +128,12 @@ function App() {
       </header>
 
       {/* Timeline */}
-      <div className={`border-b pt-2 pb-8 ${d ? 'border-slate-800' : 'border-slate-200'}`}>
+      <div className={`border-b pt-2 pb-6 ${d ? 'border-slate-800' : 'border-slate-200'}`}>
         <StageTimeline currentPage={currentPage} goToPage={goToPage} darkMode={d} />
       </div>
 
       {/* Main content */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-6">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-3">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentPage}
@@ -157,7 +157,7 @@ function App() {
             {isStagePage && stage && (
               <>
                 {/* Stage title */}
-                <div className="mb-4">
+                <div className="mb-2">
                   <div className="flex items-center gap-3 mb-1">
                     <span
                       className={`text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded ${categoryBadge(stage.category)}`}
@@ -172,15 +172,16 @@ function App() {
                   <p className={`text-sm ${categoryColor(stage.category)}`}>
                     {stage.subtitle}
                   </p>
-                  <p className={`text-sm mt-1 italic ${d ? 'text-slate-400' : 'text-slate-500'}`}>
-                    {stage.story}
-                  </p>
+                  {stage.story && (
+                    <p className={`text-sm mt-1 italic ${d ? 'text-slate-400' : 'text-slate-500'}`}>
+                      {stage.story}
+                    </p>
+                  )}
                 </div>
 
                 {/* Screenshot + Description layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                  {/* Screenshot area */}
-                  <div className="lg:col-span-3">
+                {stage.layout === 'stacked' ? (
+                  <div className="space-y-3">
                     <motion.div
                       className="glass-card overflow-hidden"
                       initial={{ opacity: 0, scale: 0.95 }}
@@ -206,13 +207,45 @@ function App() {
                         }}
                       />
                     </motion.div>
+                    <ExplanationPanel stage={stage} darkMode={d} columns={2} />
                   </div>
+                ) : (
+                  <div className="grid grid-cols-1 lg:grid-cols-7 gap-4">
+                    {/* Screenshot area */}
+                    <div className="lg:col-span-5">
+                      <motion.div
+                        className="glass-card overflow-hidden"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <img
+                          src={`${BASE}${stage.image}`}
+                          alt={stage.title}
+                          className="w-full object-contain"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            target.parentElement!.innerHTML = `
+                              <div class="flex items-center justify-center h-80 ${d ? 'text-slate-500' : 'text-slate-400'}">
+                                <div class="text-center">
+                                  <div class="text-4xl mb-3">&#127916;</div>
+                                  <div class="text-sm font-medium">Screenshot coming soon</div>
+                                  <div class="text-xs mt-1 opacity-60">${stage.image}</div>
+                                </div>
+                              </div>
+                            `;
+                          }}
+                        />
+                      </motion.div>
+                    </div>
 
-                  {/* Description panel */}
-                  <div className="lg:col-span-2">
-                    <ExplanationPanel stage={stage} darkMode={d} />
+                    {/* Description panel */}
+                    <div className="lg:col-span-2">
+                      <ExplanationPanel stage={stage} darkMode={d} />
+                    </div>
                   </div>
-                </div>
+                )}
               </>
             )}
           </motion.div>
@@ -240,7 +273,7 @@ function App() {
                 ? 'The Challenge'
                 : currentPage <= 7
                   ? 'Platform'
-                  : currentPage <= 9
+                  : currentPage <= 10
                     ? 'Operations'
                     : 'Summary'}
           </div>

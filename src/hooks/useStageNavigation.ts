@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
 
 const DEFAULT_INTERVAL = 20;
-const TOTAL_PAGES = 11; // 0=intro, 1-9=stages, 10=outro
+const TOTAL_PAGES = 12; // 0=intro, 1-10=stages, 11=outro
 
 export function useStageNavigation() {
   const getInitialPage = () => {
@@ -70,7 +70,7 @@ export function useStageNavigation() {
   }, [nextPage, prevPage]);
 
   // Derived: which stage (1-7) is active, or null if on an image page
-  const currentStage = currentPage >= 1 && currentPage <= 9 ? currentPage : null;
+  const currentStage = currentPage >= 1 && currentPage <= 10 ? currentPage : null;
 
   return {
     currentPage, currentStage, direction,
