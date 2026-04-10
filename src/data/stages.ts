@@ -34,6 +34,7 @@ export const stages: StageDefinition[] = [
       'Scalability gap: Can\'t run many agents reliably on shared infrastructure',
     ],
     image: 'bank-demo-1.gif',
+    autoplaySeconds: 20,
   },
   {
     id: 3,
@@ -85,6 +86,7 @@ export const stages: StageDefinition[] = [
       'AuthBridge validates every outbound request against identity-based policies',
     ],
     image: 'bank-demo-7.gif',
+    autoplaySeconds: 30,
   },
   {
     id: 6,
@@ -104,6 +106,7 @@ export const stages: StageDefinition[] = [
     ],
     image: 'bank-demo-14.png',
     image2: 'bank-demo-14.gif',
+    autoplaySeconds: 20,
   },
   {
     id: 7,
@@ -140,6 +143,7 @@ export const stages: StageDefinition[] = [
     ],
     image: 'bank-demo-10.gif',
     layout: 'stacked',
+    autoplaySeconds: 30,
   },
   {
     id: 9,
@@ -157,6 +161,7 @@ export const stages: StageDefinition[] = [
       'Configurable safety levels: from baseline monitoring to full enforcement',
     ],
     image: 'bank-demo-11.gif',
+    autoplaySeconds: 30,
   },
   {
     id: 10,
@@ -175,5 +180,6 @@ export const stages: StageDefinition[] = [
     ],
     image: 'bank-demo-15.gif',
     layout: 'stacked',
+    autoplaySeconds: 30,
   },
 ];

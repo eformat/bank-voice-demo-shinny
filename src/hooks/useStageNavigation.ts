@@ -1,7 +1,17 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { stages } from '../data/stages';
 
 const DEFAULT_INTERVAL = 20;
 const TOTAL_PAGES = 12; // 0=intro, 1-10=stages, 11=outro
+
+function getPageDuration(page: number, globalInterval: number): number {
+  // stages array is 0-indexed, pages 1-10 map to stages[0]-stages[9]
+  if (page >= 1 && page <= 10) {
+    const stage = stages[page - 1];
+    if (stage?.autoplaySeconds) return stage.autoplaySeconds;
+  }
+  return globalInterval;
+}
 
 export function useStageNavigation() {
   const getInitialPage = () => {
@@ -18,7 +28,7 @@ export function useStageNavigation() {
   const [direction, setDirection] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
   const [intervalSec, setIntervalSec] = useState(DEFAULT_INTERVAL);
-  const timerRef = useRef<ReturnType<typeof setInterval>>(0 as unknown as ReturnType<typeof setInterval>);
+  const timerRef = useRef<ReturnType<typeof setTimeout>>(0 as unknown as ReturnType<typeof setTimeout>);
 
   const goToPage = useCallback(
     (n: number) => {
@@ -36,22 +46,23 @@ export function useStageNavigation() {
 
   const toggleAutoplay = useCallback(() => setAutoplay(prev => !prev), []);
 
-  // Autoplay timer — loops back to 0 after last page
+  // Autoplay timer — uses per-page duration, loops back to 0 after last page
   useEffect(() => {
     if (!autoplay) {
-      clearInterval(timerRef.current);
+      clearTimeout(timerRef.current);
       return;
     }
-    timerRef.current = setInterval(() => {
+    const duration = getPageDuration(currentPage, intervalSec);
+    timerRef.current = setTimeout(() => {
       setCurrentPage(prev => {
         const next = prev < TOTAL_PAGES - 1 ? prev + 1 : 0;
         setDirection(next > prev ? 1 : -1);
         window.location.hash = `page-${next}`;
         return next;
       });
-    }, intervalSec * 1000);
-    return () => clearInterval(timerRef.current);
-  }, [autoplay, intervalSec]);
+    }, duration * 1000);
+    return () => clearTimeout(timerRef.current);
+  }, [autoplay, intervalSec, currentPage]);
 
   // Keyboard navigation
   useEffect(() => {

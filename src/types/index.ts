@@ -10,4 +10,5 @@ export interface StageDefinition {
   image: string; // filename in public/
   image2?: string; // optional second image below the first
   layout?: 'side' | 'stacked'; // 'side' (default): image left + panel right; 'stacked': full-width image + panel below
+  autoplaySeconds?: number; // custom autoplay duration for this stage (overrides global interval)
 }
