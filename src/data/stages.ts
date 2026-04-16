@@ -33,7 +33,7 @@ export const stages: StageDefinition[] = [
       'Observability gap: No tracing, no audit trail, no reasoning visibility',
       'Scalability gap: Can\'t run many agents reliably on shared infrastructure',
     ],
-    image: 'bank-demo-1.gif',
+    image: 'bank-demo-1.webp',
     autoplaySeconds: 20,
   },
   {
@@ -85,7 +85,7 @@ export const stages: StageDefinition[] = [
       'Kagenti enforces governance policies at the platform level',
       'AuthBridge validates every outbound request against identity-based policies',
     ],
-    image: 'bank-demo-7.gif',
+    image: 'bank-demo-7.webp',
     autoplaySeconds: 30,
   },
   {
@@ -105,7 +105,7 @@ export const stages: StageDefinition[] = [
       'Manage access to and security of AI tools and MCP servers centrally',
     ],
     image: 'bank-demo-14.png',
-    image2: 'bank-demo-14.gif',
+    image2: 'bank-demo-14.webp',
     autoplaySeconds: 30,
   },
   {
@@ -141,7 +141,7 @@ export const stages: StageDefinition[] = [
       'End-to-end visibility from user request through agent chain',
       'Full audit trail: who the agent is, what it did, and why',
     ],
-    image: 'bank-demo-10.gif',
+    image: 'bank-demo-10.webp',
     layout: 'stacked',
     autoplaySeconds: 65,
   },
@@ -160,7 +160,7 @@ export const stages: StageDefinition[] = [
       'Jailbreak prevention stops prompt injection attacks',
       'Configurable safety levels: from baseline monitoring to full enforcement',
     ],
-    image: 'bank-demo-11.gif',
+    image: 'bank-demo-11.webp',
     autoplaySeconds: 30,
   },
   {
@@ -178,7 +178,7 @@ export const stages: StageDefinition[] = [
       'JWT claims show SPIFFE ID as azp/client_id with group membership',
       'End-to-end proof: workload identity verified through AuthBridge token exchange',
     ],
-    image: 'bank-demo-15.gif',
+    image: 'bank-demo-15.webp',
     layout: 'stacked',
     autoplaySeconds: 30,
   },
